@@ -159,19 +159,19 @@ describe('SmallCityGoogleMap', () => {
       expect(mapRegion).toHaveAttribute('data-runtime-status', 'ready')
       expect(markerConstructor).toHaveBeenCalledTimes(2)
     })
-    expect(within(mapRegion).getAllByRole('button', { name: /지도 마커:/ })).toHaveLength(2)
+    expect(within(mapRegion).queryByRole('button', { name: /지도 마커:/ })).not.toBeInTheDocument()
     expect(mapConstructor).toHaveBeenCalledWith(
       expect.any(HTMLElement),
       expect.objectContaining({ mapId: 'test-map-id' }),
     )
     expect(markerConstructor.mock.calls[0]?.[0]).toEqual(
       expect.objectContaining({
-        clickable: false,
+        clickable: true,
         label: expect.objectContaining({
           color: '#33271E',
           text: '강릉',
         }),
-        opacity: 0,
+        position: { lat: 37.7519, lng: 128.8761 },
         title: '강릉',
       }),
     )
