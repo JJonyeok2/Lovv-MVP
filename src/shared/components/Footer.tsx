@@ -1,6 +1,7 @@
 import type { MouseEvent } from 'react'
 
 type FooterProps = {
+  /** Reuses the home navigation handler while footer policy routes are still placeholders. */
   onGoHome: (event?: MouseEvent<HTMLElement>) => void
 }
 
@@ -17,6 +18,7 @@ export function Footer({ onGoHome }: FooterProps) {
           </p>
         </div>
 
+        {/* Policy links intentionally loop home until dedicated legal/contact pages are added. */}
         <nav aria-label="Lovv footer links" className="flex flex-wrap gap-x-5 gap-y-2 text-sm font-bold text-[#33271E]">
           <a
             href="#home"
